@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Weather App</title>
+  </head>
+  <body>
+    <main>
+      <section class="app-left">
+        <nav class="app-header">
+          <h1 class="logo">Yk Weather</h1>
+        </nav>
+        <div class="app-content">
+          <div class="weather-container">
+            <div class="w-temp-container">
+              <h2 class="w-temp">37°C</h2>
+            </div>
+            <div class="w-city-container">
+              <div class="w-city-content">
+                <h3 class="w-city">Lubumbashi</h3>
+                <p class="w-city-details"></p>
+              </div>
+              <p class="w-date-time">
+                <i class="bi bi-clock"></i>
+                <span class="w-hour">17:03:54</span>
+                <i class="bi bi-calendar-event"></i>
+                <span class="w-date">Monday 24/09/2024</span>
+              </p>
+            </div>
+            <div class="w-icon-container">
+              <img
+                src=""
+                alt="icon"
+                srcset=""
+                id="w-icon"
+                class="w-icon-condition"
+              />
+              <p class="w-condition">condition</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="app-aside">
+        <div class="app-aside-top">
+          <div class="w-searchbar-container">
+            <input
+              type="search"
+              name="search"
+              id="city-input"
+              placeholder="search by city"
+            />
+            <button id="searchbar">Search</button>
+          </div>
+          <p class="error-msg"></p>
+        </div>
+        <div class="app-aside-bottom">
+          <div class="app-weater-day-container"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
