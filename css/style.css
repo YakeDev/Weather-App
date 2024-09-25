@@ -46,7 +46,7 @@ p {
 
 main {
   height: 100vh;
-  overflow: hidden;
+  overflow: auto;
   display: grid;
   grid-template-columns: 1.45fr 0.55fr;
   grid-template-rows: 1fr;
