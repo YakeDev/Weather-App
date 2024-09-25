@@ -12,26 +12,21 @@
   </head>
   <body>
     <main>
+      <!-- loader -->
+      <div class="loader" style="display: none">
+        <div class="spinner"></div>
+      </div>
+
       <section class="app-left">
+        <!-- Nav app -->
         <nav class="app-header">
           <h1 class="logo">Yk Weather</h1>
         </nav>
+        <!-- Middle Section -->
         <div class="app-content">
-          <div class="weather-container">
+          <div class="ek-weather-temp">
             <div class="w-temp-container">
-              <h2 class="w-temp">37°C</h2>
-            </div>
-            <div class="w-city-container">
-              <div class="w-city-content">
-                <h3 class="w-city">Lubumbashi</h3>
-                <p class="w-city-details"></p>
-              </div>
-              <p class="w-date-time">
-                <i class="bi bi-clock"></i>
-                <span class="w-hour">17:03:54</span>
-                <i class="bi bi-calendar-event"></i>
-                <span class="w-date">Monday 24/09/2024</span>
-              </p>
+              <h2 class="w-temp">--</h2>
             </div>
             <div class="w-icon-container">
               <img
@@ -44,8 +39,24 @@
               <p class="w-condition">condition</p>
             </div>
           </div>
+
+          <div class="weather-container">
+            <div class="w-city-container">
+              <div class="w-city-content">
+                <h3 class="w-city">Lubumbashi</h3>
+                <p class="w-city-details"></p>
+              </div>
+              <p class="w-date-time">
+                <i class="bi bi-clock"></i>
+                <span class="w-hour">17:03</span>
+                <i class="bi bi-calendar-event"></i>
+                <span class="w-date">Monday 24/09/2024</span>
+              </p>
+            </div>
+          </div>
         </div>
       </section>
+      <!-- Aside App -->
       <section class="app-aside">
         <div class="app-aside-top">
           <div class="w-searchbar-container">
@@ -55,12 +66,15 @@
               id="city-input"
               placeholder="search by city"
             />
-            <button id="searchbar">Search</button>
+            <button id="searchbar"><i class="bi bi-search"></i></button>
           </div>
           <p class="error-msg"></p>
         </div>
-        <div class="app-aside-bottom">
-          <div class="app-weater-day-container"></div>
+        <div class="week-weather-container">
+          <div class="ek-week-weather-container">
+            <p class="week-weather-title">7 Day Forecast</p>
+          </div>
+          <div class="app-aside-bottom"></div>
         </div>
       </section>
     </main>

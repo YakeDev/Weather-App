@@ -1,4 +1,4 @@
-const area = "Lubumbashi";
+let area = "Lubumbashi";
 // const date1 = "2024-09-24";
 // const date2 = "";
 const apiKey = "Q85WR6S84C26GP6ZKJGMBRT69";
@@ -42,7 +42,7 @@ const asideIconeCdt = document.querySelector(".aside-icon-condition");
 const weatherAsideDate = document.querySelector(".aside-weather-date");
 const asideDay = document.querySelector(".aside-weather-day");
 
-const dayContainer = document.querySelector(".app-weater-day-container");
+const appAsideBottom = document.querySelector(".app-aside-bottom");
 const errorMsg = document.querySelector(".error-msg");
 const searchBtn = document.querySelector("#searchbar");
 const cityInput = document.querySelector("#city-input");
@@ -58,7 +58,7 @@ const date1 = `${fDate.getFullYear()}-0${
   fDate.getMonth() + 1
 }-${fDate.getDate()}`;
 
-console.log(`date1: ${date1}`);
+// console.log(`date1: ${date1}`);
 
 // Add 6 Days to create Date 2
 const date = new Date(date1);
@@ -68,19 +68,36 @@ const date2 = `${dateAdd.getFullYear()}-0${
   dateAdd.getMonth() + 1
 }-${dateAdd.getDate()}`;
 
-console.log(`date2: ${date2}`);
+// console.log(`date2: ${date2}`);
 
 //get day
 const weekDay = weekDays[date.getDay()];
 
+//Loader
+const loader = document.querySelector(".loader");
+
+// Update Weather function
+const updateWeather = async () => {
+  try {
+    loader.style.display = "block";
+
+    await getWeather(area);
+  } catch (error) {
+    console.error("Erreur lors de la mise à jour des données météo:", error);
+  } finally {
+    loader.style.display = "none";
+  }
+};
+
 // Event manager for city search
 searchBtn.addEventListener("click", () => {
-  const city = cityInput.value.trim(); // Retrieve entered city
+  const city = cityInput.value.trim();
   if (city) {
-    errorMsg.textContent = ""; // Reset error message
-    getWeather(city); // Call function with new city
+    errorMsg.textContent = "";
+    area = city; // Update area variable
+    updateWeather(); // Calls up the update function
   } else {
-    errorMsg.textContent = "Veuillez entrer un nom de ville !";
+    errorMsg.textContent = "Please enter a city name!";
     errorMsg.style.color = "red";
   }
 });
@@ -102,16 +119,16 @@ async function getWeather(area) {
 
     const weatherData = await response.json();
 
-    console.log(weatherData);
+    // console.log(weatherData);
 
     if (temperature) {
       temperature.textContent = `${Math.round(
         (5 / 9) * (weatherData.days[0].temp - 32)
-      )} °C`;
+      )}°`;
     }
 
     if (timeNow) {
-      timeNow.textContent = `${fDate.getHours()}:${fDate.getMinutes()}`;
+      timeNow.textContent = `${fDate.getHours()}:${fDate.getMinutes()}:${fDate.getSeconds()}`;
     }
 
     if (dateToDay) {
@@ -133,11 +150,14 @@ async function getWeather(area) {
     }
 
     // Empty forecast container before adding new forecasts
-    dayContainer.innerHTML = "";
+    appAsideBottom.innerHTML = "";
 
     // Gestion des jours dans la variable dayValues
     const dayValues = Object.values(weatherData.days);
     dayValues.forEach((day, i) => {
+      const dayContainer = document.createElement("div");
+      dayContainer.classList = "app-weater-day-container";
+
       const wAsideHour = document.createElement("div");
       wAsideHour.classList = "w-hour-content";
 
@@ -149,18 +169,18 @@ async function getWeather(area) {
 
       const pDay = document.createElement("p");
       pDay.classList = "aside-weather-day";
-      pDay.style.color = "blue";
+      // pDay.style.color = "blue";
 
-      const pDate = document.createElement("p");
+      const pDate = document.createElement("span");
       pDate.classList = "aside-weather-date";
-      pDate.style.color = "blue";
+      // pDate.style.color = "blue";
 
       const pIcon = document.createElement("img");
       pIcon.classList = "w-icon-condition";
 
       const pTemp = document.createElement("p");
       pTemp.classList = "aside-temp";
-      pTemp.style.color = "blue";
+      // pTemp.style.color = "blue";
 
       wAsideHour.appendChild(pDay);
       wAsideHour.appendChild(pDate);
@@ -170,6 +190,8 @@ async function getWeather(area) {
       dayContainer.appendChild(wAsideHour);
       dayContainer.appendChild(wAsideIcon);
       dayContainer.appendChild(wAsideTemp);
+
+      appAsideBottom.appendChild(dayContainer);
 
       // const day = dayValues[i];
 
@@ -189,5 +211,8 @@ async function getWeather(area) {
   }
 }
 
-// console.log(`${apiUrl}${area}/${location}?key=${apiKey}`);
-getWeather(area);
+// Calls the initial update
+updateWeather();
+
+// Updates data every 10 minutes (600000 ms)
+setInterval(updateWeather, 600000);

@@ -1,3 +1,266 @@
+:root {
+  --color-primary: white;
+  --color-secondary: #3498db;
+  --font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--color-primary);
+  background-image: linear-gradient(
+    180deg,
+    hsl(209deg 100% 54%) 0%,
+    hsl(208deg 97% 57%) 31%,
+    hsl(208deg 94% 60%) 46%,
+    hsl(207deg 91% 63%) 56%,
+    hsl(206deg 88% 65%) 64%,
+    hsl(205deg 85% 68%) 70%,
+    hsl(204deg 83% 71%) 76%,
+    hsl(204deg 79% 74%) 81%,
+    hsl(203deg 77% 76%) 85%,
+    hsl(202deg 74% 79%) 90%,
+    hsl(201deg 70% 82%) 95%,
+    hsl(200deg 67% 85%) 100%
+  );
+}
+
+h1,
+h2,
+h3,
+p {
+  color: var(--color-primary);
+  text-shadow: 0 0 5px rgba(23, 36, 50, 0.2);
+}
+
+p {
+  font-weight: 300;
+  font-size: 12px;
+}
+
+main {
+  height: 100vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.45fr 0.55fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
 .w-icon-condition {
   width: 48px;
+}
+
+/* App left */
+
+.app-left {
+  padding: 50px 50px 120px 80px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr;
+}
+
+h1.logo {
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.app-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.ek-weather-temp {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 30px;
+}
+
+.weather-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.w-temp-container {
+  margin-right: 20px;
+}
+.w-city-container {
+  margin-right: 50px;
+}
+.w-icon-container {
+  margin: 0 30px 10px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.w-temp {
+  font-size: 180px;
+  line-height: 1em;
+  font-weight: 600;
+}
+
+img#w-icon {
+  width: 256px;
+  margin-bottom: 8px;
+}
+
+.w-icon-container p {
+  font-size: 18px;
+}
+
+.w-city-content h3 {
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 1em;
+  text-transform: capitalize;
+}
+
+.w-city-content p {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+.w-date-time {
+  font-size: 14px;
+}
+.w-date-time span {
+  margin-right: 10px;
+}
+
+/*   App Aside    */
+
+.app-aside {
+  background-color: hsla(0, 0%, 6%, 0.4);
+  padding: 50px;
+  backdrop-filter: blur(30px);
+}
+
+/* . Search bar*/
+
+.w-searchbar-container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 1fr;
+}
+
+#city-input[type="search"] {
+  height: 40px;
+  padding: 10px;
+  border: 1px solid hsla(0, 0%, 100%, 0.8);
+  border-right: transparent;
+  border-radius: 50px 0px 0px 50px;
+  font-size: 16px;
+  background-color: transparent;
+  color: var(--color-primary);
+}
+
+#city-input[type="search"]:focus {
+  border-color: #ffbf00;
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 166, 0, 0.5);
+  color: var(--color-primary);
+}
+#city-input[type="search"]::placeholder {
+  font-weight: 200;
+  color: hsla(0, 0%, 100%, 0.528);
+}
+
+button#searchbar {
+  border-radius: 0px 50px 50px 0px;
+  height: 40px;
+  width: 40px;
+  background-color: transparent;
+  border: 1px solid hsla(0, 0%, 100%, 0.8);
+  border-left: transparent;
+}
+
+button i {
+  font-size: 18px;
+  color: var(--color-primary);
+}
+
+.ek-week-weather-container {
+  margin: 50px 0 20px 0;
+  border-bottom: 1px solid rgba(232, 232, 232, 0.5);
+}
+
+p.week-weather-title {
+  line-height: 2.5em;
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(232, 232, 232, 0.7);
+  text-transform: uppercase;
+}
+
+.app-weater-day-container {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr auto;
+  grid-template-rows: 1fr;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.w-hour-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.aside-weather-date {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(232, 232, 232, 0.7);
+}
+
+.aside-weather-day {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.6em;
+  font-weight: 500;
+  color: rgba(232, 232, 232, 0.96);
+}
+
+.aside-temp {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* Loader */
+
+.loader {
+  position: fixed; /* Ou absolute si vous le souhaitez à l'intérieur d'un conteneur */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 1000; /* Pour le garder au-dessus des autres éléments */
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
