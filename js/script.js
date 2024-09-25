@@ -119,7 +119,7 @@ async function getWeather(area) {
 
     const weatherData = await response.json();
 
-    console.log(weatherData);
+    // console.log(weatherData);
 
     if (temperature) {
       temperature.textContent = `${Math.round(
