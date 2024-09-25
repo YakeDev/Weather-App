@@ -119,11 +119,11 @@ async function getWeather(area) {
 
     const weatherData = await response.json();
 
-    // console.log(weatherData);
+    console.log(weatherData);
 
     if (temperature) {
       temperature.textContent = `${Math.round(
-        (5 / 9) * (weatherData.days[0].temp - 32)
+        (5 / 9) * (weatherData.currentConditions.temp - 32)
       )}°`;
     }
 
@@ -136,11 +136,11 @@ async function getWeather(area) {
     }
 
     if (wIcon && weatherData.days[0].icon) {
-      wIcon.src = `../assets/weather-icon/${weatherData.days[0].icon}.svg`;
+      wIcon.src = `../assets/weather-icon/${weatherData.currentConditions.icon}.svg`;
     }
 
     if (wCondition) {
-      wCondition.textContent = `${weatherData.days[0].conditions}`;
+      wCondition.textContent = `${weatherData.currentConditions.conditions}`;
     }
     if (wCity) {
       wCity.textContent = `${weatherData.address}`;
